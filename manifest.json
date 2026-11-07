@@ -1,0 +1,61 @@
+{
+  "manifest_version": 3,
+  "name": "Instagram Comment Scraper & Exporter",
+  "version": "1.1.0",
+  "description": "Captura comentários de posts do Instagram automaticamente com limite personalizável, interceptação GraphQL/API e exportação em CSV e JSON.",
+  "icons": {
+    "16": "icon16.png",
+    "48": "icon48.png",
+    "128": "icon128.png"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icon16.png",
+      "48": "icon48.png",
+      "128": "icon128.png"
+    },
+    "default_title": "Instagram Comment Scraper"
+  },
+  "permissions": [
+    "activeTab",
+    "storage"
+  ],
+  "host_permissions": [
+    "https://*.instagram.com/*"
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "https://*.instagram.com/*"
+      ],
+      "js": [
+        "interceptor.js"
+      ],
+      "world": "MAIN",
+      "run_at": "document_start"
+    },
+    {
+      "matches": [
+        "https://*.instagram.com/*"
+      ],
+      "js": [
+        "content.js"
+      ],
+      "css": [
+        "content.css"
+      ],
+      "run_at": "document_idle"
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "interceptor.js"
+      ],
+      "matches": [
+        "https://*.instagram.com/*"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+# OS generated files
+Thumbs.db
+ehthumbs.db
+.DS_Store
+
+# Temporary files
+*.tmp
+*.log
+*.crx
